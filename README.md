@@ -26,19 +26,19 @@ $ yarn ios
 
 ## 1.component
 
-![image](https://github.com/JaterLee/learnRN-note/resource/component.png)
+![image](https://github.com/JaterLee/learnRN-note/blob/master/resource/component.png)
 
 ## 2.helloRN
 
-![image](https://github.com/JaterLee/learnRN-note/resource/list.png)
+![image](https://github.com/JaterLee/learnRN-note/blob/master/resource/list.png)
 
 ## 3.scrollDemo
 
-![image](https://github.com/JaterLee/learnRN-note/resource/scroll.png)
+![image](https://github.com/JaterLee/learnRN-note/blob/master/resource/scroll.png)
 
 ## 4.trolley
 
-![image](https://github.com/JaterLee/learnRN-note/resource/trolley.png)
+![image](https://github.com/JaterLee/learnRN-note/blob/master/resource/trolley.png)
 
 # 知识点
 
@@ -73,7 +73,7 @@ reduce() 可以作为一个高阶函数，用于函数的 compose。
 
 ## RN 一直卡在 muti podfile
 
-![image](https://github.com/JaterLee/learnRN-note/resource/InstallinoCocoaPods.jpg)
+![image](https://github.com/JaterLee/learnRN-note/blob/master/InstallinoCocoaPods.jpg)
 
 > 依赖 down 不下来, 科学上网破之
 
