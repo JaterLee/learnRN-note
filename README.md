@@ -22,11 +22,58 @@ $ cd ios && RCT_NEW_ARCH_ENABLED=1 pod install && cd ../
 $ yarn ios
 ```
 
+# 项目介绍
+
+## 1.component
+
+![image](https://github.com/JaterLee/learnRN-note/resource/component.png)
+
+## 2.helloRN
+
+![image](https://github.com/JaterLee/learnRN-note/resource/list.png)
+
+## 3.scrollDemo
+
+![image](https://github.com/JaterLee/learnRN-note/resource/scroll.png)
+
+## 4.trolley
+
+![image](https://github.com/JaterLee/learnRN-note/resource/trolley.png)
+
+# 知识点
+
+## 1.RN 函数参数是否带大括号
+
+带大括号是指传递一个参数，参数类型为对象，里面有三个属性 children, authority, noMatch，不带大括号就是传递三个参数，这里的大括号不是块级作用域，就是单纯的表示一个对象
+
+## 2.统一文件格式
+
+建议使用 ts tsx
+
+## 3.JavaScript reduce() 方法
+
+```
+var numbers = [65, 44, 12, 4];
+
+function getSum(total, num) {
+    return total + num;
+}
+function myFunction(item) {
+    document.getElementById("demo").innerHTML = numbers.reduce(getSum);
+}
+```
+
+reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。
+
+reduce() 可以作为一个高阶函数，用于函数的 compose。
+
+注意: reduce() 对于空数组是不会执行回调函数的。
+
 # 疑难杂症
 
 ## RN 一直卡在 muti podfile
 
-![image](https://github.com/JaterLee/learnRN-note/resource/Installino CocoaPods.jpg)
+![image](https://github.com/JaterLee/learnRN-note/resource/InstallinoCocoaPods.jpg)
 
 > 依赖 down 不下来, 科学上网破之
 

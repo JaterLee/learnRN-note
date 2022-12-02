@@ -3,7 +3,7 @@ import TrolleyTable from './TrolleyTable';
 
 export default function App() {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{marginHorizontal: 20}}>
       <TrolleyTable />
     </SafeAreaView>
   );

@@ -83,11 +83,11 @@ export default function TrolleyTable() {
 
   const ss = styleConfig();
   return (
-    <ScrollView>
+    <ScrollView style={{marginTop: 20, height: '100%'}}>
       <View style={ss.titleContainer}>
         <Text style={ss.text}>名称</Text>
         <Text style={ss.text}>价格</Text>
-        <Text style={ss.text}>数量</Text>
+        <Text style={ss.lastText}>数量</Text>
       </View>
       <View>
         {products.map(product => (
@@ -99,7 +99,9 @@ export default function TrolleyTable() {
           />
         ))}
       </View>
-      <Text>{total}</Text>
+      <Text style={{marginVertical: 10, fontSize: 18, fontWeight: 'bold'}}>
+        总价:{total}
+      </Text>
     </ScrollView>
   );
 }
@@ -108,12 +110,18 @@ function styleConfig() {
   return StyleSheet.create({
     titleContainer: {
       flexDirection: 'row',
-      justifyContent: 'space-around',
     },
     text: {
       fontSize: 17,
       color: 'black',
       fontWeight: 'bold',
+      flex: 1,
+    },
+    lastText: {
+      fontSize: 17,
+      color: 'black',
+      fontWeight: 'bold',
+      alignSelf: 'flex-end',
     },
   });
 }
