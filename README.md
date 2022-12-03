@@ -26,19 +26,19 @@ $ yarn ios
 
 ## 1.component
 
-![image](https://github.com/JaterLee/learnRN-note/blob/master/resource/component.png)
+<img decoding="async" src="https://github.com/JaterLee/learnRN-note/blob/master/resource/component.png" width="50%">
 
 ## 2.helloRN
 
-![image](https://github.com/JaterLee/learnRN-note/blob/master/resource/list.png)
+<img decoding="async" src="https://github.com/JaterLee/learnRN-note/blob/master/resource/list.png" width="50%">
 
 ## 3.scrollDemo
 
-![image](https://github.com/JaterLee/learnRN-note/blob/master/resource/scroll.png)
+<img decoding="async" src="https://github.com/JaterLee/learnRN-note/blob/master/resource/scroll.png" width="50%">
 
 ## 4.trolley
 
-![image](https://github.com/JaterLee/learnRN-note/blob/master/resource/trolley.png)
+<img decoding="async" src="https://github.com/JaterLee/learnRN-note/blob/master/resource/trolley.png" width="50%">
 
 # 知识点
 
@@ -69,11 +69,33 @@ reduce() 可以作为一个高阶函数，用于函数的 compose。
 
 注意: reduce() 对于空数组是不会执行回调函数的。
 
+## 4.UseEffect
+
+项目中会在 `useEffect`函数中获取后端数据然后更新状态刷新 UI,这里需要注意的是`useEffect`在组件`mount`时执行,也会在组件更新时执行.因为我们每一次请求数据之后都会设置本地状态触发组件更新,因此会触发`useEffect`再次执行,这就出现了无限循环的情况.
+
+我们只想在组件`mount`时请求数据,就可以传递一个空数组作为`useEffect`的第二个参数,这样就可以避免组件更新执行`useEffect`,只会在组件`mount`时执行
+
+```
+ useEffect(() => {
+    setRequestStatus(RequestStatus.PENDING);
+
+    fetch('https://6389bee14eccb986e8990c52.mockapi.io/api/v1/products')
+      .then(res => res.json())
+      .then((products: Products) => {
+        setRequestStatus(RequestStatus.SUCCESS);
+        setProducts(products);
+      })
+      .catch(() => {
+        setRequestStatus(RequestStatus.PENDING);
+      });
+  }, []);
+```
+
 # 疑难杂症
 
 ## RN 一直卡在 muti podfile
 
-![image](https://github.com/JaterLee/learnRN-note/blob/master/InstallinoCocoaPods.jpg)
+![image](https://github.com/JaterLee/learnRN-note/blob/master/resource/InstallinoCocoaPods.jpg)
 
 > 依赖 down 不下来, 科学上网破之
 

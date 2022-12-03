@@ -36,13 +36,10 @@ export default function TrolleyTable() {
     fetch('https://6389bee14eccb986e8990c52.mockapi.io/api/v1/products')
       .then(res => res.json())
       .then((products: Products) => {
-        console.log(222);
-        console.log(products);
         setRequestStatus(RequestStatus.SUCCESS);
         setProducts(products);
       })
       .catch(() => {
-        console.log(1111);
         setRequestStatus(RequestStatus.PENDING);
       });
   }, []);
