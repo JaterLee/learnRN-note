@@ -40,6 +40,10 @@ $ yarn ios
 
 <img decoding="async" src="https://github.com/JaterLee/learnRN-note/blob/master/resource/trolley.png" width="50%">
 
+## 5.TicTacToe
+
+<img decoding="async" src="https://github.com/JaterLee/learnRN-note/blob/master/resource/tictactoe.png" width="50%">
+
 # 知识点
 
 ## 1.RN 函数参数是否带大括号
