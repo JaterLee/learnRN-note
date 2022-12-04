@@ -91,6 +91,32 @@ reduce() 可以作为一个高阶函数，用于函数的 compose。
   }, []);
 ```
 
+## 5.UseState
+
+`useState`函数的入参是状态的默认值,函数的返回值是状态和更新该状态的函数.
+
+第一次调用`useState`函数后,就生成了默认值是空数组[]的商品表单状态 `products`,以及设置该状态的函数 `setProducts`.
+
+第二次调用`useState`函数后生成了默认值是字符串`'IDLE'`的请求状态`requestStatus`, 以及设置该状态的函数焦作`setRequestStatus`.
+
+use 开头的钩子函数都要写在组件的顶部,把 JSX 都写在函数组件的最后面,并使⽤ `eslint-plugin-reacthooks` 插件来保障 Hook 规则的会被正确执⾏。
+
+如果有需要在 setState 回调中做一些事情,可以在`useEffect`里面处理
+
+## 6.让 View 实现 onPress
+
+we may activate the click onPress event on the View component by using its onStartShouldSetResponder Prop.
+
+```
+<View>
+      onStartShouldSetResponder={() => {
+        console.log(1111);
+        return true;
+      }}
+</View>
+
+```
+
 # 疑难杂症
 
 ## RN 一直卡在 muti podfile
@@ -98,6 +124,29 @@ reduce() 可以作为一个高阶函数，用于函数的 compose。
 ![image](https://github.com/JaterLee/learnRN-note/blob/master/resource/InstallinoCocoaPods.jpg)
 
 > 依赖 down 不下来, 科学上网破之
+
+## ERROR Warning: Each child in a list should have a unique "key" prop.
+
+基本都是因为在循环生成多个组件的时候，没有给组件加上 key 引起的，所以报错警告。需要循环生成多个组件中，加上 key 值（唯一值）那么就不会报错了。
+
+```
+function Square(index: number) {
+  return (
+    <View
+      style={{width: 100, height: 100, borderWidth: 1, borderColor: 'black'}}
+      key={index}>
+      <Button
+        title="O"
+        onPress={() => {
+          console.log(111);
+        }}></Button>
+    </View>
+  );
+}
+
+```
+
+# Tips
 
 ## RN 命令
 
