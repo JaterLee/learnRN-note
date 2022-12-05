@@ -44,6 +44,10 @@ $ yarn ios
 
 <img decoding="async" src="https://github.com/JaterLee/learnRN-note/blob/master/resource/tictactoe.png" width="50%">
 
+## 6.images
+
+<img decoding='async' src='https://github.com/JaterLee/learnRN-note/blob/master/resource/image.png' width='50%>
+
 # 知识点
 
 ## 1.RN 函数参数是否带大括号
@@ -121,6 +125,33 @@ we may activate the click onPress event on the View component by using its onSta
 
 ```
 
+## 7.打包编译
+
+`npx react-native bundle --entry-file index.js --dev false --minify false --bundle-output ./build/index.bundle --assets-dest ./build`
+
+这段打包（bundle）命令的意思是，以根⽬录的 index.tsx ⽂件为⼊⼝（entry file），产出
+release（dev=false）环境的包，这个包不⽤压缩（minify=false），并将这个包命名为
+./build/index.bundle，同时将静态资源编译产物放到 ./build ⽬录。
+
+```
+./build
+├── assets
+│ └── src
+│ └── mutiImages
+│ └── icon.jpg
+└── index.bundle
+```
+
+## 8.加载宿主 app 内的资源图片
+
+```
+      <Image source={{uri: 'app_icon.png'}} style={{width: 100, height: 100}} />
+```
+
+这里遇到一个问题那就是这么方式加载图片资源,地址是~/xxxx.app/app_icon.png,如果是放在 xcasset 内的图片实际在打包后是合并在 asset.car 文件中的,这种图片是加载不到的
+
+而且加载宿主 app 内的图片是不推荐的!复用收益抵不上复用带来的安全风险
+
 # 疑难杂症
 
 ## RN 一直卡在 muti podfile
@@ -147,8 +178,16 @@ function Square(index: number) {
     </View>
   );
 }
+```
+
+## image source require 入参一定要字面量函数吗? 不能用变量吗?
 
 ```
+const path = './icon.png';
+const staticImage = require(path);
+```
+
+看教程上说不能这么写,但是我这么写好像也没什么问题,这个问题存疑!
 
 # Tips
 
