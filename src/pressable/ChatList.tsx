@@ -8,7 +8,7 @@ interface ChatModel {
 
 export default function ChatList() {
   let tempArr = [];
-  for (let index = 0; index < 20; index++) {
+  for (let index = 0; index < 15; index++) {
     let model = {} as ChatModel;
     model.avatar = 'https://reactjs.org/logo-og.png';
     model.nickname = 'robort-No' + index;
@@ -17,16 +17,29 @@ export default function ChatList() {
   }
 
   return (
-    <ScrollView style={{height: '100%', width: '100%'}}>
+    <ScrollView>
       {tempArr.map(e => (
-        <View style={{flexDirection: 'row', height: 60, width: '100%'}}>
+        <View
+          style={{
+            flexDirection: 'row',
+            height: 60,
+            width: '100%',
+          }}>
           <Image
             source={{uri: e.avatar}}
-            style={{width: 50, height: 50, borderRadius: 5}}
+            style={{width: 50, height: 50, borderRadius: 5, marginLeft: 10}}
           />
-          <View>
-            <Text>{e.nickname}</Text>
-            <Text>{e.desc}</Text>
+          <View style={{flex: 1, marginLeft: 10}}>
+            <Text style={{marginTop: 2}}>{e.nickname}</Text>
+            <Text style={{marginTop: 10, color: 'gray'}}>{e.desc}</Text>
+          </View>
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'flex-end',
+              marginRight: 12,
+            }}>
+            <Text style={{color: 'gray', marginTop: 5}}>10:00</Text>
           </View>
         </View>
       ))}

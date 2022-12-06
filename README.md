@@ -46,7 +46,11 @@ $ yarn ios
 
 ## 6.images
 
-<img decoding='async' src='https://github.com/JaterLee/learnRN-note/blob/master/resource/image.png' width='50%>
+<img decoding='async' src='https://github.com/JaterLee/learnRN-note/blob/master/resource/image.png' width='50%'>
+
+## 7.pressable
+
+<img decoding='async' src='https://github.com/JaterLee/learnRN-note/blob/master/resource/pressable.png' width='50%'>
 
 # 知识点
 

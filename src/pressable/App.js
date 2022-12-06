@@ -3,19 +3,23 @@ import ChatList from './ChatList';
 import Navbar from './Navbar';
 
 export default function App() {
+  const search = (
+    <View
+      style={{
+        height: 40,
+        margin: 10,
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        borderRadius: 5,
+      }}>
+      <TextInput placeholder="搜索"></TextInput>
+    </View>
+  );
+
   return (
-    <SafeAreaView style={{backgroundColor: '#f4f4f4'}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#f4f4f4'}}>
       <Navbar />
-      <View
-        style={{
-          height: 40,
-          margin: 10,
-          backgroundColor: 'white',
-          justifyContent: 'center',
-          borderRadius: 5,
-        }}>
-        <TextInput placeholder="搜索"></TextInput>
-      </View>
+      {search}
       <ChatList />
     </SafeAreaView>
   );
