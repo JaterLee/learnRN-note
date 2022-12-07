@@ -156,6 +156,22 @@ release（dev=false）环境的包，这个包不⽤压缩（minify=false），�
 
 而且加载宿主 app 内的图片是不推荐的!复用收益抵不上复用带来的安全风险
 
+## 9.私有函数 unstable_onChangeSync
+
+异步更新情况下，JavaScript 线程和 UI 主线程是独立运行的，此时即便 JavaScript 线程卡了 1s，主线程依旧可以正常输入文字。但同步更新的情况下，从输入文字到展示文字会有 1s 的延迟， JavaScript 线程有 1s 的阻塞，UI 主线程也会卡死 1s。
+
+```
+/**
+   * DANGER: this API is not stable and will change in the future.
+   *
+   * Callback will be called on the main thread and may result in dropped frames.
+   * Callback that is called when the text input's text changes.
+   *
+   * @platform ios
+   */
+  unstable_onChangeSync?: ?(e: ChangeEvent) => mixed,
+```
+
 # 疑难杂症
 
 ## RN 一直卡在 muti podfile
