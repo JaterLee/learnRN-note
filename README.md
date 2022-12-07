@@ -52,6 +52,10 @@ $ yarn ios
 
 <img decoding='async' src='https://github.com/JaterLee/learnRN-note/blob/master/resource/pressable.png' width='50%'>
 
+## 8.textInput
+
+<img decoding='async' src='https://github.com/JaterLee/learnRN-note/blob/master/resource/textinput.png' width='50%'>
+
 # 知识点
 
 ## 1.RN 函数参数是否带大括号
@@ -156,9 +160,9 @@ release（dev=false）环境的包，这个包不⽤压缩（minify=false），�
 
 而且加载宿主 app 内的图片是不推荐的!复用收益抵不上复用带来的安全风险
 
-## 9.私有函数 unstable_onChangeSync
+## 9.私有函数 unstable_onChangeSync 同步更新
 
-异步更新情况下，JavaScript 线程和 UI 主线程是独立运行的，此时即便 JavaScript 线程卡了 1s，主线程依旧可以正常输入文字。但同步更新的情况下，从输入文字到展示文字会有 1s 的延迟， JavaScript 线程有 1s 的阻塞，UI 主线程也会卡死 1s。
+`onChangeText`异步更新情况下，JavaScript 线程和 UI 主线程是独立运行的，此时即便 JavaScript 线程卡了 1s，主线程依旧可以正常输入文字。但`unstable_onChangeSync`同步更新的情况下，从输入文字到展示文字会有 1s 的延迟， JavaScript 线程有 1s 的阻塞，UI 主线程也会卡死 1s。
 
 ```
 /**
@@ -170,6 +174,82 @@ release（dev=false）环境的包，这个包不⽤压缩（minify=false），�
    * @platform ios
    */
   unstable_onChangeSync?: ?(e: ChangeEvent) => mixed,
+```
+
+## 10.Text
+
+```
+color:字体颜色
+
+fontFamily:字体族
+
+fontSize:字体大小
+
+fontStyle:字体样式,正常,倾斜，值为enum('normal','italic')
+
+fontWeight:字体粗细，值为enum('normal','bold','100','200'...,'900')
+
+letterSpacing:字符间隔
+
+lineHeight:行高
+
+textAlign:字体对齐方式,值为enum('auto','left','right','center','justify')
+
+textDecorationColor:貌似没效果，修饰的线的颜色
+
+textDecorationLine:貌似没效果，字体修饰，上划线，下划线，删除线，无修饰，值为enum("none",'underline','line-through','underline line-through')
+
+textDecorationStyle:enum("solid",'double','dotted','dashed')貌似没效果，修饰的线的类型
+
+writingDirection:enum("auto",'ltr','rtl')不知道什么属性，写作方向？从左到右？从右到左？
+```
+
+## 11.TextInput
+
+```
+caretHidden​ 如果为 true，则隐藏光标。默认值为 false
+```
+
+## 12.Style
+
+```
+position:定位：相对定位(absolute)，绝对定位(relative) 默认情况下使用的是相对定位
+
+marginVertical:相当于同时设置marginTop和marginBottom
+
+marginHorizontal:相当于同时设置marginLeft和marginRight
+
+margin:相当于同时设置四个
+
+padding:相当于同时设置四个
+
+paddingVertical:相当于同时设置paddingTop和paddingBottom
+
+paddingHorizontal:相当于同时设置paddingLeft和paddingRight
+
+```
+
+## 13.Flex
+
+```
+flex:number
+
+flexDirection: enum('row','column','row-reverse','column-reverse') 属性决定主轴的方向（即项目的排列方向）。
+
+flexWrap:enum('wrap','nowrap','wrap-reverse') 默认情况下，项目都排在一条线（又称"轴线"）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。
+
+alignItems:enum('flex-start','flex-end','center','stretch') 属性定义项目在交叉轴上如何对齐。
+
+alignSelf:enum('auto','flex-start','flex-end','center','stretch') 属性允许单个项目有与其他项目不一样的对齐方式，可覆盖
+
+justifyContent:enum('flex-start','flex-end','center','space-between','space-around') 属性定义了项目在主轴上的对齐方式。
+```
+
+## 14.String
+
+```
+padEnd() 方法会用一个字符串填充当前字符串（如果需要的话则重复填充），返回填充后达到指定长度的字符串。从当前字符串的末尾（右侧）开始填充。
+
 ```
 
 # 疑难杂症
@@ -249,4 +329,17 @@ Android
 ```
 git config --global user.name "JaterLee"
 git config --global user.email "lijunzhuozoom@gmail.com"
+```
+
+### 正则
+
+```
+\D：表示非数字
+
+\w：表示一个字 [0－9a-zA-Z_]
+\W：表示除[0－9a-zA-Z_]之外的字符
+
+\s：表示一个空白字符（空格，tab，换页符等）
+\S：表示一个非空白字符
+
 ```
