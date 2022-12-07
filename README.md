@@ -243,3 +243,10 @@ Android
 运行adb reverse tcp:8081 tcp:8081，
 不需要更多配置，你就可以使用Reload JS和其它的开发选项了。
 ```
+
+### 修改 git 提交用户和 email
+
+```
+git config --global user.name "JaterLee"
+git config --global user.email "lijunzhuozoom@gmail.com"
+```
