@@ -56,6 +56,10 @@ $ yarn ios
 
 <img decoding='async' src='https://github.com/JaterLee/learnRN-note/blob/master/resource/textinput.png' width='50%'>
 
+## 9.recyclerList
+
+<img decoding='async' src='https://github.com/JaterLee/learnRN-note/blob/master/resource/recyclerList.png' width='50%'>
+
 # 知识点
 
 ## 1.RN 函数参数是否带大括号
@@ -250,6 +254,113 @@ justifyContent:enum('flex-start','flex-end','center','space-between','space-arou
 ```
 padEnd() 方法会用一个字符串填充当前字符串（如果需要的话则重复填充），返回填充后达到指定长度的字符串。从当前字符串的末尾（右侧）开始填充。
 
+```
+
+## 15.`this._rowRenderer = this._rowRenderer.bind(this)`;
+
+这句话的意思是将当前的上下文（也就是 this 关键字）绑定到 `this._rowRenderer` 函数上。
+
+在 JavaScript 中，使用 bind() 方法可以将函数的上下文指定为一个特定的值。这意味着，在调用函数时，函数中的 this 关键字会被绑定到所指定的值。
+
+举个例子，如果我们有一个对象：
+
+```
+const myObject = {
+  name: 'John Doe',
+  sayHi: function() {
+    console.log(`Hi, my name is ${this.name}.`);
+  }
+};
+```
+
+如果我们想要将 myObject.sayHi 方法的上下文绑定到 myObject 上，可以这样写：
+
+```
+const myBoundFunction = myObject.sayHi.bind(myObject);
+```
+
+这样，我们就可以在不直接调用 myObject.sayHi 的情况下，通过 myBoundFunction 调用该方法，并保证 this 关键字指向 myObject。
+
+```
+myBoundFunction();  // Hi, my name is John Doe.
+```
+
+将上下文绑定到 `this._rowRenderer` 函数上可以确保在函数被调用时，this 关键字始终指向当前的上下文。这对于某些情况可能很有用，例如在函数被传递到另一个函数时。在这种情况下，如果不将上下文绑定到函数上，this 关键字可能会指向错误的对象。
+
+## 16. this.state
+
+this.state 是 React 中用于保存组件的状态（state）的对象。它可以包含组件当前的数据信息，并且可以通过组件内部的方法来更新。
+
+每个 React 组件都有自己的状态对象，并且可以通过 this.state 来访问。
+
+例如，如果我们有一个组件，它的状态对象包含一个名为 count 的属性，用于保存当前点击次数，我们可以这样写：
+
+```
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <p>You have clicked the button {this.state.count} times.</p>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          Click me!
+        </button>
+      </div>
+    );
+  }
+}
+```
+
+在这个例子中，我们在组件的构造函数中初始化了 this.state 对象。我们可以在组件的 render() 方法中使用 this.state.count 来渲染组件的当前点击次数。
+
+当用户点击按钮时，组件会调用 this.setState() 方法来更新 this.state 对象，将 count 属性的值增加 1。这会导致组件重新渲染，并且显示用户点击次数的最新值。
+
+总之，this.state 是 React 组件用于保存组件状态的对象。它可以包含组件当前的数据信息
+
+## 17.isNullOrUndefined
+
+ObjectUtil.isNullOrUndefined() 是一个函数，用于检查它的参数是否为 null 或 undefined。如果参数为 null 或 undefined，这个函数会返回 true，否则会返回 false。
+
+## 18.render()
+
+render() 方法是 React 组件的一个生命周期方法，它会在组件的某些特定时机被调用。
+
+在 React 中，组件的生命周期指的是组件从创建到销毁的整个过程。每个组件都有一些生命周期方法，它们在组件的不同阶段被调用，并且可以用来执行特定的操作。
+
+render() 方法是一个特殊的生命周期方法，它负责渲染组件的视图。当组件被挂载到页面上时，它会被首次调用，并且会在组件的状态（state）或属性（props）发生改变时再次被调用。
+
+## 19.React 组件生命周期
+
+React 组件的生命周期函数是指在组件的不同生命周期阶段被调用的方法。组件的生命周期函数可以帮助我们控制组件的渲染过程，并且可以用来执行一些针对特定阶段的操作。
+
+下面是 React 组件的一些常见生命周期函数：
+
+```
+constructor()：构造函数，用于初始化组件的状态、挂载必要的事件监听器等。
+componentWillMount()：组件即将被挂载到页面上时调用。
+render()：渲染组件，并且返回组件的视图。
+componentDidMount()：组件已经被挂载到页面上时调用。
+componentWillReceiveProps(nextProps)：组件即将接收到新的属性时调用。
+shouldComponentUpdate(nextProps, nextState)：组件是否应该更新。
+componentWillUpdate(nextProps, nextState)：组件即将更新时调用。
+componentDidUpdate(prevProps, prevState)：组件已经更新时调用。
+componentWillUnmount()：组件即将被卸载时调用。
+```
+
+在 React 应用中，组件的生命周期函数可以用来执行一些特定的操作。例如，我们可以在 componentDidMount() 函数中挂载事件监听器
+
+## 20.recyclerListView 核心三个属性
+
+```
+    layoutProvider: BaseLayoutProvider;
+    dataProvider: BaseDataProvider;
+    rowRenderer: (type: string | number, data: any, index: number, extendedState?: object) => JSX.Element | JSX.Element[] | null;
 ```
 
 # 疑难杂症
